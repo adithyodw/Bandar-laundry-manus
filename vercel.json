@@ -1,11 +1,3 @@
 {
-  "framework": "vite",
-  "buildCommand": "corepack pnpm build",
-  "outputDirectory": "dist",
-  "rewrites": [
-    {
-      "source": "/(.*)",
-      "destination": "/index.html"
-    }
-  ]
+  "framework": "nextjs"
 }
