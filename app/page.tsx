@@ -21,6 +21,10 @@ const TestimonialsSection = dynamic(
   () => import("@/components/sections/TestimonialsSection"),
   { ssr: true }
 );
+const AppDownloadSection = dynamic(
+  () => import("@/components/sections/AppDownloadSection"),
+  { ssr: true }
+);
 const InstagramSection = dynamic(
   () => import("@/components/sections/InstagramSection")
 );
@@ -57,6 +61,7 @@ export default function HomePage() {
       <BranchesSection />
       <FranchiseSection />
       <TestimonialsSection />
+      <AppDownloadSection />
       <InstagramSection />
     </>
   );

@@ -14,6 +14,9 @@ export const WA_FRANCHISE_LINK =
   "https://wa.me/6281290271990?text=Hi%2C%20I'm%20interested%20in%20Bandar%20Laundry%20franchise%20partnership.";
 
 export const INSTAGRAM_URL = "https://www.instagram.com/bandarlaundryexpress/";
+export const FACEBOOK_URL = "https://www.facebook.com/bandarlaundryexpress/";
+export const APP_PLAY_URL =
+  "https://play.google.com/store/apps/details?id=id.smartlink.wl.app_bandar&hl=id";
 
 // Central contact numbers
 // WA order line : +62 812-9027-1990 (WA_LINK above)
