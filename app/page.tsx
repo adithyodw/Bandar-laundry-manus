@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import dynamic from "next/dynamic";
+import { SITE_URL } from "@/lib/site";
 import HeroSection from "@/components/sections/HeroSection";
 import TrustBar from "@/components/sections/TrustBar";
 import AboutSection from "@/components/sections/AboutSection";
@@ -48,13 +49,13 @@ export const metadata: Metadata = {
     "laundry ubud",
   ],
   alternates: {
-    canonical: "https://bandar-laundry-manus.vercel.app",
+    canonical: SITE_URL,
   },
   openGraph: {
     title: "Laundry Bali | Bandar Laundry Express — 90-Min Express",
     description:
       "Laundry Bali leader: express laundry in 90 minutes, island-wide branches, WhatsApp ordering.",
-    url: "https://bandar-laundry-manus.vercel.app",
+    url: SITE_URL,
   },
 };
 

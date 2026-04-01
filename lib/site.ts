@@ -1,5 +1,5 @@
 /** Canonical site origin — keep in sync with `metadataBase` in `app/layout.tsx`. */
-export const SITE_URL = "https://bandar-laundry-manus.vercel.app";
+export const SITE_URL = "https://bandar-laundry-bali.vercel.app";
 
 export function absoluteUrl(path: string): string {
   if (path.startsWith("http://") || path.startsWith("https://")) return path;

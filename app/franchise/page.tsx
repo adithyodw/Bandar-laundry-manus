@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import KemitraanClient from "@/components/kemitraan/KemitraanClient";
+import { absoluteUrl } from "@/lib/site";
 
 export const metadata: Metadata = {
   title:
@@ -19,7 +20,7 @@ export const metadata: Metadata = {
       "Franchise & Investment — Bandar Laundry Express | Bali Opportunity",
     description:
       "A scalable, proven laundry franchise in Bali's growing market. Over 100,000 customers served. Explore store locations and franchise packages.",
-    url: "https://bandar-laundry-manus.vercel.app/franchise",
+    url: absoluteUrl("/franchise"),
   },
 };
 
