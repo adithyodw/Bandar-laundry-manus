@@ -10,7 +10,7 @@ const navLinks = [
   { label: "About", href: "/#about" },
   { label: "Services", href: "/#services" },
   { label: "Branches", href: "/#branches" },
-  { label: "Kemitraan", href: "/#franchise" },
+  { label: "Kemitraan", href: "/kemitraan" },
   { label: "FAQ", href: "/faq-laundry-bali" },
 ];
 
@@ -75,8 +75,8 @@ export default function Navbar() {
               {link.label}
             </Link>
           ))}
-          <Link href="/#franchise" className="btn-gold text-xs px-5 py-2.5">
-            Hubungi Kami
+          <Link href="/kemitraan" className="btn-gold text-xs px-5 py-2.5">
+            Kemitraan
           </Link>
         </nav>
 
@@ -146,7 +146,7 @@ export default function Navbar() {
               ))}
               <div className="pt-4 pb-2">
                 <Link
-                  href="/#franchise"
+                  href="/kemitraan"
                   onClick={closeMenu}
                   className="btn-wa w-full justify-center"
                 >
