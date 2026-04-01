@@ -49,7 +49,7 @@ export default function FranchiseSection() {
             <div className="flex items-center gap-3 mb-3">
               <span className="block w-8 h-px bg-[#F5A623]" />
               <span className="text-[#F5A623] text-xs font-semibold tracking-[0.18em] uppercase">
-                Kemitraan &amp; Franchise
+                Franchise &amp; Investment
               </span>
             </div>
             <h2

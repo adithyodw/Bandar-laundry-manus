@@ -96,8 +96,8 @@ function HeroSection({ lang }: { lang: Lang }) {
             <span className="block w-10 h-px bg-[#F5A623]/60" />
             <span className="text-[#F5A623] text-[10px] font-bold tracking-[0.28em] uppercase">
               {t({
-                id: "Peluang Kemitraan · Bali, Indonesia",
-                en: "Partnership Opportunity · Bali, Indonesia",
+                id: "Peluang Franchise & Investasi · Bali, Indonesia",
+                en: "Franchise & Investment Opportunity · Bali, Indonesia",
               })}
             </span>
             <span className="block w-10 h-px bg-[#F5A623]/60" />
@@ -110,7 +110,7 @@ function HeroSection({ lang }: { lang: Lang }) {
               fontSize: "clamp(2.5rem, 7.5vw, 5.5rem)",
             }}
           >
-            {t({ id: "Kemitraan", en: "Partnership" })}
+            {t({ id: "Franchise", en: "Franchise" })}
             <br />
             <span className="text-[#F5A623] italic">Bandar Laundry Express</span>
           </h1>
@@ -288,6 +288,89 @@ function CompanyOverview({ lang }: { lang: Lang }) {
               </div>
             </div>
           </motion.div>
+        </div>
+      </div>
+    </section>
+  );
+}
+
+// ─────────────────────────────────────────────────────────────
+// STORE GALLERY
+// ─────────────────────────────────────────────────────────────
+function StoreGallery({ lang }: { lang: Lang }) {
+  const t = useT(lang);
+  const stores = [
+    {
+      src: "/store-gallery/store-01.jpeg",
+      title: {
+        id: "Bandar Laundry Express Storefront",
+        en: "Bandar Laundry Express Storefront",
+      },
+      subtitle: {
+        id: "Outlet aktif dengan standar operasional premium",
+        en: "Active outlet with premium operating standards",
+      },
+    },
+  ];
+
+  return (
+    <section className="py-20 md:py-28 bg-white">
+      <div className="container">
+        <motion.div {...fadeUp()} className="max-w-2xl mb-12">
+          <SectionLabel>
+            {t({ id: "Galeri Outlet", en: "Store Gallery" })}
+          </SectionLabel>
+          <h2
+            className="font-bold text-[#0D1B2A] leading-tight mb-4"
+            style={{
+              fontFamily: "var(--font-playfair), serif",
+              fontSize: "clamp(1.7rem, 4vw, 2.6rem)",
+            }}
+          >
+            {t({
+              id: "Jejak Operasional Nyata di Lapangan",
+              en: "Real Operational Footprint on the Ground",
+            })}
+          </h2>
+          <p className="text-slate-500 leading-relaxed">
+            {t({
+              id: "Dokumentasi outlet aktif Bandar Laundry Express untuk menunjukkan kualitas eksekusi, branding, dan kesiapan sistem operasional.",
+              en: "Documentation of active Bandar Laundry Express outlets to demonstrate execution quality, branding consistency, and operational readiness.",
+            })}
+          </p>
+        </motion.div>
+
+        <div className="grid grid-cols-1 gap-6">
+          {stores.map((store, idx) => (
+            <motion.figure
+              key={store.src}
+              {...fadeUp(idx * 0.08)}
+              className="group relative overflow-hidden border border-slate-200 bg-[#FAF8F4]"
+            >
+              <div className="relative aspect-[16/9]">
+                <Image
+                  src={store.src}
+                  alt={t(store.title)}
+                  fill
+                  className="object-cover transition-transform duration-700 group-hover:scale-[1.03]"
+                  sizes="(min-width: 1024px) 70vw, 100vw"
+                />
+                <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-black/15 to-transparent" />
+                <figcaption className="absolute left-0 right-0 bottom-0 p-6 md:p-8">
+                  <div className="text-[10px] tracking-[0.2em] uppercase text-[#F5A623] mb-2 font-semibold">
+                    {t({ id: "Actual Store", en: "Actual Store" })}
+                  </div>
+                  <h3
+                    className="text-white font-semibold mb-1"
+                    style={{ fontFamily: "var(--font-playfair), serif", fontSize: "1.25rem" }}
+                  >
+                    {t(store.title)}
+                  </h3>
+                  <p className="text-white/80 text-sm">{t(store.subtitle)}</p>
+                </figcaption>
+              </div>
+            </motion.figure>
+          ))}
         </div>
       </div>
     </section>
@@ -618,7 +701,7 @@ function PricingSection({ lang }: { lang: Lang }) {
       <div className="container">
         <motion.div {...fadeUp()} className="text-center max-w-2xl mx-auto mb-16">
           <SectionLabel>
-            {t({ id: "Paket Kemitraan", en: "Partnership Packages" })}
+            {t({ id: "Paket Franchise", en: "Franchise Packages" })}
           </SectionLabel>
           <h2
             className="font-bold text-[#0D1B2A] leading-tight mb-4"
@@ -628,7 +711,7 @@ function PricingSection({ lang }: { lang: Lang }) {
             }}
           >
             {t({
-              id: "Pilih Paket yang Tepat",
+              id: "Pilih Paket Franchise yang Tepat",
               en: "Choose the Right Package",
             })}
           </h2>
@@ -1393,7 +1476,7 @@ function CTASection({ lang }: { lang: Lang }) {
             <div className="flex items-center justify-center gap-3 mb-6">
               <span className="block w-10 h-px bg-[#F5A623]/60" />
               <span className="text-[#F5A623] text-[10px] font-bold tracking-[0.28em] uppercase">
-                {t({ id: "Mulai Kemitraan", en: "Start Your Partnership" })}
+                {t({ id: "Mulai Franchise", en: "Start Your Franchise Journey" })}
               </span>
               <span className="block w-10 h-px bg-[#F5A623]/60" />
             </div>
@@ -1452,7 +1535,7 @@ function CTASection({ lang }: { lang: Lang }) {
                   +62 812 9027 1990
                 </a>
                 <div className="text-white/35 text-xs mt-0.5">
-                  {t({ id: "Tim Kemitraan", en: "Partnership Team" })}
+                  {t({ id: "Tim Franchise", en: "Franchise Team" })}
                 </div>
               </div>
               <div>
@@ -1488,6 +1571,7 @@ export default function KemitraanClient() {
       <LangToggle lang={lang} setLang={setLang} />
       <HeroSection lang={lang} />
       <CompanyOverview lang={lang} />
+      <StoreGallery lang={lang} />
       <KeyMetrics lang={lang} />
       <BusinessModel lang={lang} />
       <PricingSection lang={lang} />

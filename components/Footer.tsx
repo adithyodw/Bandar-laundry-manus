@@ -6,7 +6,7 @@ const navLinks = [
   { label: "About Us", href: "/#about" },
   { label: "Services", href: "/#services" },
   { label: "Branches", href: "/#branches" },
-  { label: "Kemitraan", href: "/kemitraan" },
+  { label: "Franchise", href: "/franchise" },
   { label: "FAQ", href: "/faq-laundry-bali" },
 ];
 
@@ -194,8 +194,8 @@ export default function Footer() {
                   </a>
                 </div>
                 <div>
-                  <Link href="/kemitraan" className="hover:text-white transition-colors">
-                    Kemitraan &amp; investor partnership
+                  <Link href="/franchise" className="hover:text-white transition-colors">
+                    Franchise &amp; Investment
                   </Link>
                 </div>
                 <div>Open Daily: 07:00 – 22:00</div>
