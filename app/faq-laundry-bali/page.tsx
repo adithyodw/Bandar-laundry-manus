@@ -1,7 +1,6 @@
 "use client";
 
 import { useState } from "react";
-import type { Metadata } from "next";
 import Link from "next/link";
 import { motion, AnimatePresence } from "framer-motion";
 import { WA_LINK } from "@/lib/data";
@@ -50,7 +49,7 @@ const faqs = [
   {
     question: "Do you offer franchise or partnership opportunities?",
     answer:
-      "Yes! Bandar Laundry Express actively seeks partnership opportunities for motivated investors and entrepreneurs. We offer a complete franchise package including training, operational support, branding, and ongoing guidance. Contact us via WhatsApp or email at adithyodw@gmail.com to learn more.",
+      "Yes. Bandar Laundry Express offers a structured franchise and investment program for Bali and beyond. See the full franchise overview, packages, and contact details on our Franchise page (/franchise). WhatsApp our franchise team at +62 812 9027 1990 or email adithyodw@gmail.com.",
   },
 ];
 

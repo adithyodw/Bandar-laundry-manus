@@ -11,6 +11,7 @@ const navLinks = [
 ];
 
 const locationLinks = [
+  { label: "Laundry Bali (hub)", href: "/laundry-bali" },
   { label: "Laundry Kuta", href: "/laundry-kuta" },
   { label: "Laundry Seminyak", href: "/laundry-seminyak" },
   { label: "Laundry Canggu", href: "/laundry-canggu" },

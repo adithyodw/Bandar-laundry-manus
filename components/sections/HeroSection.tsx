@@ -30,7 +30,7 @@ export default function HeroSection() {
       {/* Background image — priority for LCP */}
       <Image
         src={HERO_BG}
-        alt="Bandar Laundry Express Bali store front"
+        alt="Bandar Laundry Express — laundry Bali, express laundry service at retail store in Denpasar / Badung"
         fill
         priority
         fetchPriority="high"

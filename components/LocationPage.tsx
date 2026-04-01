@@ -4,6 +4,10 @@ import { motion } from "framer-motion";
 import Link from "next/link";
 import { WA_LINK } from "@/lib/data";
 import { locationPages } from "@/lib/data";
+import {
+  buildBreadcrumbJsonLd,
+  buildLocalLaundryServiceJsonLd,
+} from "@/lib/jsonld";
 
 type Testimonial = {
   name: string;
@@ -13,6 +17,7 @@ type Testimonial = {
 };
 
 type LocationData = {
+  slug: string;
   location: string;
   intro: string;
   content: string;
@@ -24,8 +29,27 @@ type LocationData = {
 export default function LocationPage({ data }: { data: LocationData }) {
   const waLink = `https://wa.me/62817334128?text=Halo%20Bandar%20Laundry%20Express%2C%20saya%20membutuhkan%20laundry%20di%20area%20${encodeURIComponent(data.location)}.`;
 
+  const breadcrumbLd = buildBreadcrumbJsonLd([
+    { name: "Home", path: "/" },
+    { name: `Laundry ${data.location} Bali`, path: `/${data.slug}` },
+  ]);
+
+  const serviceLd = buildLocalLaundryServiceJsonLd({
+    locationName: data.location,
+    slug: data.slug,
+    description: `${data.intro} Express laundry in ${data.location}, Bali — 90-minute service via Bandar Laundry Express.`,
+  });
+
   return (
     <>
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbLd) }}
+      />
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(serviceLd) }}
+      />
       <section className="relative bg-[#0D1B2A] pt-32 pb-20">
         <div className="absolute inset-0 bg-[url('https://d2xsxph8kpxj0f.cloudfront.net/310519663482333703/KB4KAXETgqhUXRp3CHL52M/bandar-store_4ab567f3.jpeg')] bg-cover bg-center opacity-20" />
         <div className="relative container">

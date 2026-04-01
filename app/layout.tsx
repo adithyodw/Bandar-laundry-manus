@@ -4,6 +4,9 @@ import "./globals.css";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import WhatsAppFloat from "@/components/WhatsAppFloat";
+import { testimonials } from "@/lib/data";
+import { buildSiteJsonLdGraph } from "@/lib/jsonld";
+import { SITE_URL, DEFAULT_OG_IMAGE } from "@/lib/site";
 
 const playfair = Playfair_Display({
   subsets: ["latin"],
@@ -30,52 +33,60 @@ export const viewport: Viewport = {
 };
 
 export const metadata: Metadata = {
-  metadataBase: new URL("https://bandar-laundry-manus.vercel.app"),
+  metadataBase: new URL(SITE_URL),
   title: {
-    default: "Bandar Laundry Express Bali — Premium Laundry Service",
+    default:
+      "Laundry Bali | Best Express Laundry Service — Bandar Laundry Express",
     template: "%s | Bandar Laundry Express Bali",
   },
   description:
-    "Bali's #1 express laundry service. 90-minute turnaround across 9 branches in Denpasar and Badung. Fast, clean, and reliable — trusted by hotels, villas, and residents.",
+    "Best laundry in Bali: 90-minute express laundry, 9+ branches across Denpasar & Badung. Laundry service Bali for Kuta, Seminyak, Canggu, Ubud — wash, fold, ironing & commercial. Order on WhatsApp.",
   keywords: [
     "laundry bali",
-    "laundry express bali",
-    "express laundry bali",
-    "laundry canggu",
-    "laundry seminyak",
-    "laundry denpasar",
-    "laundry kuta",
-    "bandar laundry express",
+    "best laundry in bali",
     "laundry service bali",
-    "laundry kiloan bali",
+    "laundry near me bali",
+    "express laundry bali",
+    "laundry kuta",
+    "laundry seminyak",
+    "laundry canggu",
+    "laundry ubud",
+    "laundry denpasar",
+    "bandar laundry express",
+    "digital laundry bali",
+    "hotel laundry bali",
+    "villa laundry bali",
   ],
+  alternates: { canonical: SITE_URL },
+  icons: {
+    icon: "/logo-hd.png",
+    apple: "/logo-hd.png",
+  },
   authors: [{ name: "Bandar Laundry Express" }],
   creator: "Bandar Laundry Express",
   openGraph: {
     type: "website",
     locale: "en_US",
-    url: "https://bandar-laundry-manus.vercel.app",
+    url: SITE_URL,
     siteName: "Bandar Laundry Express",
-    title: "Bandar Laundry Express — Premium Laundry Service in Bali",
+    title: "Laundry Bali — Bandar Laundry Express | 90-Min Express",
     description:
-      "90-minute express laundry across 9 branches in Bali. Trusted by hotels, villas, residents, and businesses.",
+      "Laundry Bali done right: express service in 90 minutes, island-wide coverage via 9+ branches. Trusted for laundry Kuta, Seminyak, Canggu, Ubud & Denpasar.",
     images: [
       {
-        url: "https://d2xsxph8kpxj0f.cloudfront.net/310519663482333703/KB4KAXETgqhUXRp3CHL52M/bandar-store_4ab567f3.jpeg",
+        url: DEFAULT_OG_IMAGE,
         width: 1200,
         height: 630,
-        alt: "Bandar Laundry Express Bali",
+        alt: "Bandar Laundry Express — laundry service Bali, express wash and fold",
       },
     ],
   },
   twitter: {
     card: "summary_large_image",
-    title: "Bandar Laundry Express — Premium Laundry Service in Bali",
+    title: "Laundry Bali | Bandar Laundry Express",
     description:
-      "90-minute express laundry across 9 branches in Bali. Trusted by hotels, villas, and residents.",
-    images: [
-      "https://d2xsxph8kpxj0f.cloudfront.net/310519663482333703/KB4KAXETgqhUXRp3CHL52M/bandar-store_4ab567f3.jpeg",
-    ],
+      "Best laundry service Bali: 90-minute express, 9+ branches, WhatsApp ordering.",
+    images: [DEFAULT_OG_IMAGE],
   },
   robots: {
     index: true,
@@ -90,73 +101,7 @@ export const metadata: Metadata = {
   },
 };
 
-const localBusinessSchema = {
-  "@context": "https://schema.org",
-  "@type": "LocalBusiness",
-  "@id": "https://bandar-laundry-manus.vercel.app",
-  name: "Bandar Laundry Express",
-  description:
-    "Bali's first digital laundry service. 90-minute express turnaround across 9 branches in Denpasar and Badung.",
-  url: "https://bandar-laundry-manus.vercel.app",
-  telephone: "+62817334128",
-  image:
-    "https://d2xsxph8kpxj0f.cloudfront.net/310519663482333703/KB4KAXETgqhUXRp3CHL52M/bandar-logo_110b4814.png",
-  logo:
-    "https://d2xsxph8kpxj0f.cloudfront.net/310519663482333703/KB4KAXETgqhUXRp3CHL52M/bandar-logo_110b4814.png",
-  priceRange: "$$",
-  address: {
-    "@type": "PostalAddress",
-    streetAddress: "Jl. Kebo Iwa Utara No. 125",
-    addressLocality: "Denpasar",
-    addressRegion: "Bali",
-    postalCode: "80117",
-    addressCountry: "ID",
-  },
-  geo: {
-    "@type": "GeoCoordinates",
-    latitude: -8.65,
-    longitude: 115.21,
-  },
-  openingHoursSpecification: [
-    {
-      "@type": "OpeningHoursSpecification",
-      dayOfWeek: [
-        "Monday",
-        "Tuesday",
-        "Wednesday",
-        "Thursday",
-        "Friday",
-        "Saturday",
-        "Sunday",
-      ],
-      opens: "07:00",
-      closes: "22:00",
-    },
-  ],
-  sameAs: ["https://www.instagram.com/bandarlaundryexpress/"],
-  aggregateRating: {
-    "@type": "AggregateRating",
-    ratingValue: "4.9",
-    reviewCount: "200",
-    bestRating: "5",
-  },
-};
-
-const organizationSchema = {
-  "@context": "https://schema.org",
-  "@type": "Organization",
-  name: "Bandar Laundry Express",
-  url: "https://bandar-laundry-manus.vercel.app",
-  logo: "https://d2xsxph8kpxj0f.cloudfront.net/310519663482333703/KB4KAXETgqhUXRp3CHL52M/bandar-logo_110b4814.png",
-  contactPoint: {
-    "@type": "ContactPoint",
-    telephone: "+62817334128",
-    contactType: "customer service",
-    areaServed: "ID",
-    availableLanguage: ["English", "Indonesian"],
-  },
-  sameAs: ["https://www.instagram.com/bandarlaundryexpress/"],
-};
+const siteGraphLd = buildSiteJsonLdGraph(testimonials);
 
 export default function RootLayout({
   children,
@@ -169,13 +114,7 @@ export default function RootLayout({
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{
-            __html: JSON.stringify(localBusinessSchema),
-          }}
-        />
-        <script
-          type="application/ld+json"
-          dangerouslySetInnerHTML={{
-            __html: JSON.stringify(organizationSchema),
+            __html: JSON.stringify(siteGraphLd),
           }}
         />
       </head>

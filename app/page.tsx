@@ -30,23 +30,30 @@ const InstagramSection = dynamic(
 );
 
 export const metadata: Metadata = {
-  title: "Bandar Laundry Express Bali — Premium Laundry Service | Laundry Bali",
+  title:
+    "Laundry Bali | Best Express Laundry — Bandar Laundry Express (90 Minutes)",
   description:
-    "Bandar Laundry Express is Bali's #1 express laundry service. 90-minute turnaround, 9 branches in Denpasar and Badung. Trusted by hotels, villas, and residents. Order via WhatsApp.",
+    "Best laundry in Bali: Bandar Laundry Express — 90-minute express laundry, 9+ branches, laundry service Bali for Kuta, Seminyak, Canggu, Ubud & Denpasar. WhatsApp orders. Trusted by hotels & villas.",
   keywords: [
     "laundry bali",
-    "laundry express bali",
+    "best laundry in bali",
+    "laundry service bali",
+    "laundry near me bali",
     "express laundry bali",
     "bandar laundry express",
-    "laundry service bali",
     "laundry denpasar",
     "laundry canggu",
     "laundry seminyak",
+    "laundry kuta",
+    "laundry ubud",
   ],
+  alternates: {
+    canonical: "https://bandar-laundry-manus.vercel.app",
+  },
   openGraph: {
-    title: "Bandar Laundry Express — Bali's #1 Laundry Service",
+    title: "Laundry Bali | Bandar Laundry Express — 90-Min Express",
     description:
-      "90-minute express laundry across 9 branches in Bali. Trusted by hotels, villas, and residents.",
+      "Laundry Bali leader: express laundry in 90 minutes, island-wide branches, WhatsApp ordering.",
     url: "https://bandar-laundry-manus.vercel.app",
   },
 };
