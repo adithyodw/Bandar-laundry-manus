@@ -24,8 +24,7 @@ export default function HeroSection() {
     <section
       id="hero"
       aria-label="Hero"
-      className="relative flex items-center justify-start overflow-hidden"
-      style={{ minHeight: "100svh" }}
+      className="relative flex items-center justify-start overflow-hidden hero-section"
     >
       {/* Background image — priority for LCP */}
       <Image
@@ -126,7 +125,7 @@ export default function HeroSection() {
 
       {/* Scroll indicator — hidden on very small screens to reduce clutter */}
       <div
-        className="absolute bottom-8 left-1/2 -translate-x-1/2 hidden sm:flex flex-col items-center gap-2"
+        className="hero-scroll-hint absolute bottom-8 left-1/2 -translate-x-1/2 hidden sm:flex flex-col items-center gap-2"
         aria-hidden="true"
       >
         <span className="text-white/40 text-xs tracking-widest uppercase">Scroll</span>

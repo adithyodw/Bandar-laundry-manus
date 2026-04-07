@@ -5,6 +5,7 @@ import { motion, AnimatePresence, useReducedMotion } from "framer-motion";
 import Image from "next/image";
 import { ABOUT_DIGITAL_LAUNDRY_SLIDES } from "@/lib/about-digital";
 import { appleEase } from "@/lib/motion-easing";
+import { useIosLikeDevice } from "@/hooks/useIosLikeDevice";
 
 const slides = [...ABOUT_DIGITAL_LAUNDRY_SLIDES];
 const AUTO_MS = 6000;
@@ -63,6 +64,7 @@ function ChevronRight() {
 
 export default function AboutSection() {
   const prefersReduced = useReducedMotion();
+  const iosLike = useIosLikeDevice();
   const [index, setIndex] = useState(0);
   const [paused, setPaused] = useState(false);
 
@@ -70,10 +72,10 @@ export default function AboutSection() {
   const next = useCallback(() => setIndex((i) => (i + 1) % slides.length), []);
 
   useEffect(() => {
-    if (prefersReduced || paused || slides.length < 2) return;
+    if (prefersReduced || paused || slides.length < 2 || iosLike) return;
     const id = window.setInterval(next, AUTO_MS);
     return () => window.clearInterval(id);
-  }, [prefersReduced, paused, next]);
+  }, [prefersReduced, paused, next, iosLike]);
 
   return (
     <section id="about" className="py-16 md:py-24 bg-[#FAF8F4] overflow-hidden">
@@ -98,17 +100,10 @@ export default function AboutSection() {
               aria-label="Bandar Laundry Express store photos"
             >
               {!prefersReduced ? (
-                <AnimatePresence mode="wait" initial={false}>
-                  <motion.div
-                    key={slides[index].src}
-                    variants={VARIANTS}
-                    initial="enter"
-                    animate="center"
-                    exit="exit"
-                    transition={TRANSITION}
-                    className="absolute inset-0"
-                  >
+                iosLike ? (
+                  <div className="absolute inset-0">
                     <Image
+                      key={slides[index].src}
                       src={slides[index].src}
                       alt={`Bandar Laundry Express store — photo ${index + 1} of ${slides.length}`}
                       fill
@@ -116,8 +111,29 @@ export default function AboutSection() {
                       sizes="(max-width: 1024px) 90vw, 420px"
                       priority={index === 0}
                     />
-                  </motion.div>
-                </AnimatePresence>
+                  </div>
+                ) : (
+                  <AnimatePresence mode="wait" initial={false}>
+                    <motion.div
+                      key={slides[index].src}
+                      variants={VARIANTS}
+                      initial="enter"
+                      animate="center"
+                      exit="exit"
+                      transition={TRANSITION}
+                      className="absolute inset-0"
+                    >
+                      <Image
+                        src={slides[index].src}
+                        alt={`Bandar Laundry Express store — photo ${index + 1} of ${slides.length}`}
+                        fill
+                        className="object-cover"
+                        sizes="(max-width: 1024px) 90vw, 420px"
+                        priority={index === 0}
+                      />
+                    </motion.div>
+                  </AnimatePresence>
+                )
               ) : (
                 <Image
                   src={slides[0].src}
@@ -135,7 +151,7 @@ export default function AboutSection() {
                   <button
                     type="button"
                     onClick={prev}
-                    className="absolute left-3 top-1/2 -translate-y-1/2 z-10 w-9 h-9 rounded-full bg-white/70 backdrop-blur-sm flex items-center justify-center text-[#0D1B2A] shadow-sm transition-[background-color,transform] duration-300 ease-[cubic-bezier(0.25,0.1,0.25,1)] hover:bg-white/90 active:scale-[0.93]"
+                    className="absolute left-3 top-1/2 -translate-y-1/2 z-10 w-9 h-9 rounded-full bg-white/92 md:bg-white/70 md:backdrop-blur-sm flex items-center justify-center text-[#0D1B2A] shadow-sm transition-[background-color,transform] duration-300 ease-[cubic-bezier(0.25,0.1,0.25,1)] hover:bg-white/90 active:scale-[0.93]"
                     aria-label="Previous photo"
                   >
                     <ChevronLeft />
@@ -143,7 +159,7 @@ export default function AboutSection() {
                   <button
                     type="button"
                     onClick={next}
-                    className="absolute right-3 top-1/2 -translate-y-1/2 z-10 w-9 h-9 rounded-full bg-white/70 backdrop-blur-sm flex items-center justify-center text-[#0D1B2A] shadow-sm transition-[background-color,transform] duration-300 ease-[cubic-bezier(0.25,0.1,0.25,1)] hover:bg-white/90 active:scale-[0.93]"
+                    className="absolute right-3 top-1/2 -translate-y-1/2 z-10 w-9 h-9 rounded-full bg-white/92 md:bg-white/70 md:backdrop-blur-sm flex items-center justify-center text-[#0D1B2A] shadow-sm transition-[background-color,transform] duration-300 ease-[cubic-bezier(0.25,0.1,0.25,1)] hover:bg-white/90 active:scale-[0.93]"
                     aria-label="Next photo"
                   >
                     <ChevronRight />

@@ -4,8 +4,7 @@ import "./globals.css";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import WhatsAppFloat from "@/components/WhatsAppFloat";
-import { Analytics } from "@vercel/analytics/next";
-import { SpeedInsights } from "@vercel/speed-insights/next";
+import DeferredVercelMetrics from "@/components/DeferredVercelMetrics";
 import { testimonials } from "@/lib/data";
 import { buildSiteJsonLdGraph } from "@/lib/jsonld";
 import { SITE_URL, DEFAULT_OG_IMAGE } from "@/lib/site";
@@ -125,8 +124,7 @@ export default function RootLayout({
         <main id="main-content">{children}</main>
         <Footer />
         <WhatsAppFloat />
-        <Analytics />
-        <SpeedInsights />
+        <DeferredVercelMetrics />
       </body>
     </html>
   );
