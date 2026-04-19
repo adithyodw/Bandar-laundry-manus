@@ -122,7 +122,14 @@ export default async function RootLayout({
   const isIos = /iP(ad|hone|od)/i.test(ua);
 
   return (
-    <html lang="en" className={`${inter.variable} ${playfair.variable}`}>
+    // data-ios attribute is set server-side so CSS selectors like html[data-ios]
+    // apply on first paint across ALL iOS browsers (Safari, Chrome, Firefox iOS).
+    // @supports (-webkit-touch-callout: none) only matched Safari — never Chrome iOS.
+    <html
+      lang="en"
+      className={`${inter.variable} ${playfair.variable}`}
+      {...(isIos ? { "data-ios": "" } : {})}
+    >
       <head>
         <script
           type="application/ld+json"

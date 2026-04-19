@@ -105,46 +105,46 @@
    *   2. content-visibility:auto tells WebKit to skip paint/composite for
    *      off-screen sections, dramatically reducing GPU memory usage.
    */
-  @supports (-webkit-touch-callout: none) {
-    /* Prevent ALL compositor layer promotion on iOS */
-    * {
-      will-change: auto !important;
-    }
+  /*
+   * iOS protection via server-set data-ios attribute on <html>.
+   *
+   * WHY NOT @supports (-webkit-touch-callout: none):
+   *   That @supports query only matches Safari iOS. Chrome iOS, Firefox iOS,
+   *   and other WebKit-based iOS browsers do NOT support -webkit-touch-callout,
+   *   so the block never applied to them — leaving all GPU/memory protections
+   *   inactive. The data-ios attribute is set server-side from the User-Agent
+   *   header so it works for every iOS browser on first paint.
+   */
+  html[data-ios] * {
+    will-change: auto !important;
+  }
 
-    /* Skip rendering below-fold sections until near viewport */
-    section:not(#hero) {
-      content-visibility: auto;
-      /* Reserve approximate height so layout doesn't shift when rendered */
-      contain-intrinsic-size: 0 500px;
-    }
+  html[data-ios] section:not(#hero) {
+    content-visibility: auto;
+    contain-intrinsic-size: 0 500px;
+  }
 
-    /* Navbar is fixed — it must always be composited/rendered */
-    .site-header {
-      content-visibility: visible;
-      -webkit-backdrop-filter: none !important;
-      backdrop-filter: none !important;
-    }
+  html[data-ios] .site-header {
+    content-visibility: visible;
+    -webkit-backdrop-filter: none !important;
+    backdrop-filter: none !important;
+  }
 
-    /* Hide bounce animation — it runs even on display:none elements in some WebKit builds */
-    .hero-scroll-hint {
-      display: none !important;
-    }
+  html[data-ios] .hero-scroll-hint {
+    display: none !important;
+  }
 
-    /* Skeleton shimmer wastes paint cycles — replace with a flat colour */
-    .skeleton {
-      animation: none !important;
-      background: #e8e8e8 !important;
-    }
+  html[data-ios] .skeleton {
+    animation: none !important;
+    background: #e8e8e8 !important;
+  }
 
-    /* blur-3xl / filter:blur() creates a compositor layer even when
-       will-change:auto is forced. Remove all CSS filter effects on iOS. */
-    .blur-3xl,
-    .blur-2xl,
-    .blur-xl,
-    [class*="blur-"] {
-      filter: none !important;
-      -webkit-filter: none !important;
-    }
+  html[data-ios] .blur-3xl,
+  html[data-ios] .blur-2xl,
+  html[data-ios] .blur-xl,
+  html[data-ios] [class*="blur-"] {
+    filter: none !important;
+    -webkit-filter: none !important;
   }
 }
 

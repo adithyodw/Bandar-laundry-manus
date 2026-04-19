@@ -141,7 +141,7 @@ export default function AboutSection() {
                   fill
                   className="object-cover"
                   sizes="(max-width: 1024px) 90vw, 420px"
-                  priority
+                  loading="lazy"
                 />
               )}
 
